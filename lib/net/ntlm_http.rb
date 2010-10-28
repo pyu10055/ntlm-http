@@ -692,12 +692,11 @@ module Net  #:nodoc:
             opt[:unicode] = false
           end
           if has_flag?(:UNICODE) and !opt[:unicode]
-            usr = NTLM::encode_utf16le(usr).gsub(/^\367\377/,'')
-            pwd = NTLM::encode_utf16le(pwd).gsub(/^\367\377/,'')
-            ws  = NTLM::encode_utf16le(ws).gsub(/^\367\377/,'')
+            usr = NTLM::encode_utf16le(usr).gsub(/^\377\376/,'')
+            pwd = NTLM::encode_utf16le(pwd).gsub(/^\377\376/,'')
+            ws  = NTLM::encode_utf16le(ws).gsub(/^\377\376/,'')
             opt[:unicode] = true
           end
-
           tgt = self.target_name
           ti = self.target_info
 
