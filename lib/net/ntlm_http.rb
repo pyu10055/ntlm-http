@@ -691,17 +691,16 @@ module Net  #:nodoc:
             ws  = NTLM::decode_utf16le(ws)
             opt[:unicode] = false
           end
-
-          if has_flag?(:UNICODE) and opt[:unicode]
-            usr = NTLM::encode_utf16le(usr)
-            pwd = NTLM::encode_utf16le(pwd)
-            ws  = NTLM::encode_utf16le(ws)
+          if has_flag?(:UNICODE) and !opt[:unicode]
+            usr = NTLM::encode_utf16le(usr).gsub(/^\367\377/,'')
+            pwd = NTLM::encode_utf16le(pwd).gsub(/^\367\377/,'')
+            ws  = NTLM::encode_utf16le(ws).gsub(/^\367\377/,'')
             opt[:unicode] = true
           end
 
           tgt = self.target_name
           ti = self.target_info
-          puts tgt
+
           chal = self[:challenge].serialize
           
           if opt[:ntlmv2]
@@ -755,7 +754,7 @@ module Net  #:nodoc:
             t.domain = arg[:domain]
             t.user = arg[:user]
             t.workstation = arg[:workstation]
-            puts t.inspect
+            
             if arg[:session_key]
               t.enable(:session_key)
               t.session_key = arg[session_key]
@@ -819,8 +818,9 @@ module Net  #:nodoc:
 		def request req, body=nil, &block
 			resp = data = auth_data = nil
 			old_request req, body do |resp|
+				wwwauth = resp.header['www-authenticate'].split(",").collect{|x| x.strip} rescue ""
 				unless Net::HTTPUnauthorized === resp and auth_data = req.auth_data and
-					auth_data[0] == :ntlm and resp['www-authenticate'] == 'NTLM' ||
+					auth_data[0] == :ntlm and (wwwauth == 'NTLM' || wwwauth.is_a?(Array) && wwwauth.include?('NTLM')) ||
 					data = resp['www-authenticate'][/^NTLM (.*)/, 1]
 					data = false
 					yield resp if block_given?
@@ -843,7 +843,7 @@ module Net  #:nodoc:
 				# challenge.target_name could be provided back as a prompt.
 				# maybe if password is unspecified, a callback can be used to provide
 				# a user prompt.
-				resp = challenge.response({:user => auth_data[1], :password => auth_data[2]}, {:unicode => false, :ntlmv2 => true})
+				resp = challenge.response({:user => auth_data[1], :password => auth_data[2]}, {:ntlmv2 => true})
 				req['Authorization'] = 'NTLM ' + resp.encode64
 				old_request(req, body) { |resp| yield resp if block_given? }
 				resp
