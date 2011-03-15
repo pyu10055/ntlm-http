@@ -100,7 +100,8 @@ module Net  #:nodoc:
       end
 
       def encode_utf16le(str)
-        swap16(Kconv.kconv(str, Kconv::UTF16, Kconv::ASCII))
+        # Kconv on JRUBY outputs a BOM... so strip that
+        swap16(Kconv.kconv(str, Kconv::UTF16, Kconv::ASCII).gsub(/^\376\377/,''))
       end
     
       def pack_int64le(val)
