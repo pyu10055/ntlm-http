@@ -76,7 +76,8 @@ module Net  #:nodoc:
         # challenge.target_name could be provided back as a prompt.
         # maybe if password is unspecified, a callback can be used to provide
         # a user prompt.
-        resp = challenge.response({:user => auth_data[1], :password => auth_data[2]}, {:ntlmv2 => true})
+        domain,dummy,userid = auth_data[1].rpartition('\\')
+        resp = challenge.response({:domain=>domain, :user => userid, :password => auth_data[2]}, {:ntlmv2 => true})
         req['Authorization'] = 'NTLM ' + resp.encode64
         old_request(req, body) { |resp| yield resp if block_given? }
         resp
