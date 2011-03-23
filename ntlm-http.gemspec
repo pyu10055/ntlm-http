@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{pyu-ntlm-http}
-  s.version = "0.1.1.1"
+  s.version = "0.1.2.1"
   s.date = %q{20-05-2009}
   s.summary = %q{Ruby/NTLM HTTP library.}
   s.email = %q{kingsley@mindflowsolutions.com}
