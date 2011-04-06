@@ -10,7 +10,7 @@ require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 #PKG_NAME = 'rubyntlm'
 PKG_NAME = 'ntlm-http'
 # add a .1 to the end of the version, to distinguish my branch
-PKG_VERSION = "#{Net::NTLM::VERSION::STRING}.2"
+PKG_VERSION = "0.1.2.1"
 
 task :default => [:test]
 
