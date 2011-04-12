@@ -8,7 +8,7 @@ require 'rake/gempackagetask'
 require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
 #PKG_NAME = 'rubyntlm'
-PKG_NAME = 'ntlm-http'
+PKG_NAME = 'pyu-ntlm-http'
 PKG_VERSION = "0.1.3"
 
 task :default => [:test]
@@ -37,12 +37,13 @@ dist_dirs = ["lib", "test", "examples"]
 spec = Gem::Specification.new do |s|
   s.name = PKG_NAME
   s.version = PKG_VERSION
-  s.summary = %q{Ruby/NTLM library.}
-  s.description = %q{Ruby/NTLM provides message creator and parser for the NTLM authentication.}
-  s.authors = ["Kohei Kajimoto"]
-  s.email = %q{koheik@gmail.com}
-  s.homepage = %q{http://rubyforge.org/projects/rubyntlm}
+  s.summary = %q{Ruby/NTLM HTTP library.}
+  s.email = %q{kingsley@mindflowsolutions.com}
+  s.homepage = %q{http://www.mindflowsolutions.net}
   s.rubyforge_project = %q{rubyntlm}
+  s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
+  s.has_rdoc = true
+  s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
 
   s.files = ["Rakefile", "README"]
   dist_dirs.each do |dir|
@@ -53,7 +54,7 @@ spec = Gem::Specification.new do |s|
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
   
-  s.autorequire = 'net/ntlm'
+  s.autorequire = 'net/ntlm_http'
 end
 
 Rake::GemPackageTask.new(spec) do |p|
