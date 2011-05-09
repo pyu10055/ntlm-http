@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
 #PKG_NAME = 'rubyntlm'
 PKG_NAME = 'pyu-ntlm-http'
-PKG_VERSION = "0.1.3"
+PKG_VERSION = "0.1.3.1"
 
 task :default => [:test]
 
