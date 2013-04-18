@@ -1,4 +1,4 @@
-#
+# encoding: us-ascii
 # = net/ntlm.rb
 #
 # An NTLM Authentication Library for Ruby
@@ -45,6 +45,7 @@
 require 'base64'
 require 'openssl'
 require 'openssl/digest'
+require 'kconv'
 
 module Net  #:nodoc:
   module NTLM
