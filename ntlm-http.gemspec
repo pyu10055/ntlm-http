@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = "pyu-ntlm-http"
-  s.version     = "0.1.3.2"
+  s.version     = "0.1.3.3"
   s.authors     = ["Kohei Kajimoto", "Kingsley Hendrickse"]
   s.email       = ["kingsley@mindflowsolutions.com"]
   s.homepage    = ""
