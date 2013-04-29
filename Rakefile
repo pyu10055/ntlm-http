@@ -1,15 +1,15 @@
 # Rakefile for rubyntlm    -*- ruby -*-
 # $Id: Rakefile,v 1.2 2006/10/05 01:36:52 koheik Exp $
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rake/testtask'
 require 'rake/packagetask'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
 #PKG_NAME = 'rubyntlm'
 PKG_NAME = 'pyu-ntlm-http'
-PKG_VERSION = "0.1.3.1"
+PKG_VERSION = "0.1.3.2"
 
 task :default => [:test]
 
@@ -57,7 +57,7 @@ spec = Gem::Specification.new do |s|
   s.autorequire = 'net/ntlm_http'
 end
 
-Rake::GemPackageTask.new(spec) do |p|
+Gem::PackageTask.new(spec) do |p|
   p.gem_spec = spec
   p.need_tar = true
   p.need_zip = true

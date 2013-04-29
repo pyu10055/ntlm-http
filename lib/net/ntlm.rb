@@ -1,4 +1,4 @@
-#
+# encoding: us-ascii
 # = net/ntlm.rb
 #
 # An NTLM Authentication Library for Ruby
@@ -45,6 +45,7 @@
 require 'base64'
 require 'openssl'
 require 'openssl/digest'
+require 'kconv'
 
 module Net  #:nodoc:
   module NTLM
@@ -100,8 +101,12 @@ module Net  #:nodoc:
       end
 
       def encode_utf16le(str)
-        # Kconv on JRUBY outputs a BOM... so strip that
-        swap16(Kconv.kconv(str, Kconv::UTF16, Kconv::ASCII).gsub(/^\376\377/,''))
+        if str.respond_to?(:encode) # ruby 1.9 / jruby --1.9
+          str.encode("UTF-16LE").force_encoding("ASCII-8BIT")
+        else
+          # Kconv on JRUBY outputs a BOM... so strip that
+          swap16(Kconv.kconv(str, Kconv::UTF16, Kconv::ASCII).gsub(/^\376\377/,''))
+        end
       end
     
       def pack_int64le(val)
