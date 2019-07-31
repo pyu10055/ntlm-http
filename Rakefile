@@ -4,7 +4,6 @@ require 'rake/packagetask'
 require 'rubygems/package_task'
 require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
-#PKG_NAME = 'rubyntlm'
 PKG_NAME = 'pyu-ntlm-http'
 PKG_VERSION = "0.1.3.2"
 
