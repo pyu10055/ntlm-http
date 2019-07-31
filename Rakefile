@@ -32,7 +32,7 @@ spec = Gem::Specification.new do |s|
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
   s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
 
-  s.files = ["Rakefile", "README"] + Dir.glob("{lib,test,examples}/**/*.rb")
+  s.files = ["Rakefile", "README"] + Dir.glob("{lib,examples}/**/*.rb")
 
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
