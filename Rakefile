@@ -33,7 +33,6 @@ Rake::RDocTask.new do |rd|
   rd.rdoc_files.include("README", "lib/**/*.rb")
 end
 
-dist_dirs = ["lib", "test", "examples"]
 spec = Gem::Specification.new do |s|
   s.name = PKG_NAME
   s.version = PKG_VERSION
@@ -43,10 +42,7 @@ spec = Gem::Specification.new do |s|
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
   s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
 
-  s.files = ["Rakefile", "README"]
-  dist_dirs.each do |dir|
-    s.files = s.files + Dir.glob("#{dir}/**/*.rb")
-  end
+  s.files = ["Rakefile", "README"] + Dir.glob("{lib,test,examples}/**/*.rb")
 
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
