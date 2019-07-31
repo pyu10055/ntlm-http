@@ -4,9 +4,6 @@ require 'rake/packagetask'
 require 'rubygems/package_task'
 require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
-PKG_NAME = 'pyu-ntlm-http'
-PKG_VERSION = "0.1.3.2"
-
 task :default => [:test]
 
 Rake::TestTask.new(:test) do |t|
@@ -23,8 +20,8 @@ Rake::RDocTask.new do |rd|
 end
 
 spec = Gem::Specification.new do |s|
-  s.name = PKG_NAME
-  s.version = PKG_VERSION
+  s.name = "pyu-ntlm-http"
+  s.version = "0.1.3.2"
   s.summary = %q{Ruby/NTLM HTTP library.}
   s.email = %q{kingsley@mindflowsolutions.com}
   s.homepage = %q{http://www.mindflowsolutions.net}
