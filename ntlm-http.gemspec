@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = "0.1.3.3"
   s.authors     = ["Kohei Kajimoto", "Kingsley Hendrickse", "Michael Ries"]
   s.email       = ["kingsley@mindflowsolutions.com","michael@riesd.com"]
-  s.homepage = %q{http://www.mindflowsolutions.net}
+  s.homepage = %q{https://rubygems.org/gems/pyu-ntlm-http}
   s.summary = %q{Ruby/NTLM HTTP library.}
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
 
