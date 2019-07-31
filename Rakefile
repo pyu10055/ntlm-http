@@ -53,8 +53,6 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc = true
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
-  
-  s.autorequire = 'net/ntlm_http'
 end
 
 Gem::PackageTask.new(spec) do |p|
