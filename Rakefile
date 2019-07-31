@@ -47,7 +47,7 @@ spec = Gem::Specification.new do |s|
   dist_dirs.each do |dir|
     s.files = s.files + Dir.glob("#{dir}/**/*.rb")
   end
-  
+
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
 end
@@ -58,6 +58,3 @@ Gem::PackageTask.new(spec) do |p|
   p.need_zip = true
   p.package_dir = 'build'
 end
-
-  
-  
