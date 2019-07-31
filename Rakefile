@@ -1,7 +1,5 @@
 require 'rdoc/task'
 require 'rake/testtask'
-require 'rake/packagetask'
-require 'rubygems/package_task'
 require File.join(File.dirname(__FILE__), 'lib', 'net', 'ntlm')
 
 task :default => [:test]
@@ -17,26 +15,4 @@ Rake::RDocTask.new do |rd|
   rd.title = 'Ruby/NTLM library'
   rd.main = "README"
   rd.rdoc_files.include("README", "lib/**/*.rb")
-end
-
-spec = Gem::Specification.new do |s|
-  s.name = "pyu-ntlm-http"
-  s.version = "0.1.3.2"
-  s.summary = %q{Ruby/NTLM HTTP library.}
-  s.email = %q{kingsley@mindflowsolutions.com}
-  s.homepage = %q{http://www.mindflowsolutions.net}
-  s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
-  s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
-
-  s.files = ["Rakefile", "README"] + Dir.glob("{lib,examples}/**/*.rb")
-
-  s.extra_rdoc_files = %w( README )
-  s.rdoc_options.concat ['--main', 'README']
-end
-
-Gem::PackageTask.new(spec) do |p|
-  p.gem_spec = spec
-  p.need_tar = true
-  p.need_zip = true
-  p.package_dir = 'build'
 end
