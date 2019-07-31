@@ -9,8 +9,6 @@ Gem::Specification.new do |s|
   s.summary = %q{Ruby/NTLM HTTP library.}
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
 
-  s.rubyforge_project = "my_gem"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

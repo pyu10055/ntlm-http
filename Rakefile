@@ -40,7 +40,6 @@ spec = Gem::Specification.new do |s|
   s.summary = %q{Ruby/NTLM HTTP library.}
   s.email = %q{kingsley@mindflowsolutions.com}
   s.homepage = %q{http://www.mindflowsolutions.net}
-  s.rubyforge_project = %q{rubyntlm}
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
   s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
 
