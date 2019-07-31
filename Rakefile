@@ -42,7 +42,6 @@ spec = Gem::Specification.new do |s|
   s.homepage = %q{http://www.mindflowsolutions.net}
   s.rubyforge_project = %q{rubyntlm}
   s.description = %q{Ruby/NTLM HTTP provides NTLM authentication over http.}
-  s.has_rdoc = true
   s.authors = ["Kohei Kajimoto,Kingsley Hendrickse"]
 
   s.files = ["Rakefile", "README"]
@@ -50,7 +49,6 @@ spec = Gem::Specification.new do |s|
     s.files = s.files + Dir.glob("#{dir}/**/*.rb")
   end
   
-  s.has_rdoc = true
   s.extra_rdoc_files = %w( README )
   s.rdoc_options.concat ['--main', 'README']
 end
