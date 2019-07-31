@@ -1,6 +1,3 @@
-# Rakefile for rubyntlm    -*- ruby -*-
-# $Id: Rakefile,v 1.2 2006/10/05 01:36:52 koheik Exp $
-
 require 'rdoc/task'
 require 'rake/testtask'
 require 'rake/packagetask'
@@ -18,13 +15,6 @@ Rake::TestTask.new(:test) do |t|
   t.warning = true
   t.verbose = true
 end
-
-# Rake::PackageTask.new(PKG_NAME, PKG_VERSION) do |p|
-#   p.need_tar_gz = true
-#   p.package_dir = 'build'
-#   p.package_files.include("README", "Rakefile")
-#   p.package_files.include("lib/net/**/*.rb", "test/**/*.rb", "examples/**/*.rb")
-# end
 
 Rake::RDocTask.new do |rd|
   rd.rdoc_dir = 'doc'
